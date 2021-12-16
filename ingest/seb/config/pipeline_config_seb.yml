@@ -1,0 +1,325 @@
+# https://github.com/tsdat/tsdat/blob/main/examples/templates/ingest_pipeline_template.yml
+# or open an existing example in this repository to see what you can do here. Note that
+# the some projects may use slightly different metadata conventions and requirements
+# than tsdat.
+
+pipeline:
+  type: Ingest
+
+  # These parameters will be used to name files.
+  location_id: SEB
+  dataset_name: BBD
+  qualifier: parameters
+  temporal: 1min
+  data_level: b1
+
+dataset_definition:
+  attributes:
+    title: Example Ingest for SEB Monitoring Data
+    description: Benchmark dataset ingest of building environmental conditions and occupancy parameters
+    conventions: "ME Data Pipeline Standards: Version 1.0"
+    institution: Pacific Northwest National Laboratory
+    code_url: https://github.com/tsdat/ingest-BBD-multiple
+    location_meaning: Systems Engineering Building
+
+  dimensions:
+    time:
+      length: unlimited
+
+  variable_defaults:
+    dims: [time]
+    attrs:
+      _FillValue: 0
+
+  variables:
+    time:
+      input:
+        name: "Timestamp"
+        converter:
+          classname: tsdat.utils.converters.StringTimeConverter
+          parameters:
+            timezone: UTC
+            time_format: "%m/%d/%Y %H:%M"
+      dims: [time]
+      type: long
+      attrs:
+        long_name: Time (UTC)
+        standard_name: time
+        units: seconds since 1970-01-01T00:00:00
+
+    LightingElectric_Power:
+      input:
+        name: SEB\LIGHTING_ELECTRIC1\Power.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    CHWS_SupplyWaterTemperature:
+      input:
+        name: SEB\CHWS\SupplyWaterTemperature.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    HWS_NaturalGasFlow:
+      input:
+        name: SEB\HWS\NaturalGasFlow.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    DHW_WaterUsageRate:
+      input:
+        name: SEB\DHW\WaterUsageRate.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU4_ExhaustCO2:
+      input:
+        name: SEB\AHU4\ExhaustCO2.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU2_ZoneCO2:
+      input:
+        name: SEB\AHU2\ZoneCO2.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU2_OutdoorDamperSignal:
+      input:
+        name: SEB\AHU2\OutdoorDamperSignal.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU2_OutdoorAirTemperature:
+      input:
+        name: SEB\AHU2\OutdoorAirTemperature.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU2_OutdoorAirFlow:
+      input:
+        name: SEB\AHU2\OutdoorAirFlow.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU2_MixedAirTemperature:
+      input:
+        name: SEB\AHU2\MixedAirTemperature.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_HotWaterValvePosition:
+      input:
+        name: SEB\AHU1\HotWaterValvePosition.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_HotWaterReturnTemperature:
+      input:
+        name: SEB\AHU1\HotWaterReturnTemperature.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_Thresholds_MinimumExhaustFanSpeedPercent:
+      input:
+        name: SEB\AHU1_THRESHOLDS\MinimumExhaustFanSpeedPercent.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV133_THRESHOLDS\MinimumZoneAirFlow:
+      input:
+        name: SEB\AHU1\VAV133_THRESHOLDS\MinimumZoneAirFlow.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV129_ZoneTemperature:
+      input:
+        name: SEB\AHU1\VAV129\ZoneTemperature.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV127B_ZoneAirFlow:
+      input:
+        name: SEB\AHU1\VAV127B\ZoneAirFlow.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV127A_TerminalBoxDamperCommand:
+      input:
+        name: SEB\AHU1\VAV127A\TerminalBoxDamperCommand.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV123B_THRESHOLDS\MaximumZoneAirFlow:
+      input:
+        name: SEB\AHU1\VAV123B_THRESHOLDS\MaximumZoneAirFlow.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV102_TerminalBoxDamperCommand:
+      input:
+        name: SEB\AHU1\VAV102\TerminalBoxDamperCommand.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU4_UnoccupiedCoolingTemperatureSetPoint:
+      input:
+        name: SEB\AHU4\UnoccupiedCoolingTemperatureSetPoint.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU3_DischargeAirTemperatureSetPoint:
+      input:
+        name: SEB\AHU3\DischargeAirTemperatureSetPoint.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV119_ZoneHeatingTemperatureSetPoint:
+      input:
+        name: SEB\AHU1\VAV119\ZoneHeatingTemperatureSetPoint.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV118_ZoneCoolingTemperatureSetPoint:
+      input:
+        name: SEB\AHU1\VAV118\ZoneCoolingTemperatureSetPoint.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV102_ZoneCoolingAirFlowSetPoint:
+      input:
+        name: SEB\AHU1\VAV102\ZoneCoolingAirFlowSetPoint.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    AHU1_VAV100_Thresholds_ZoneAirFlowSetPointOffset:
+      input:
+        name: SEB\AHU1\VAV100_THRESHOLDS\ZoneAirFlowSetPointOffset.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+    ElectricMeter_ApparentDemand:
+      input:
+        name: SEB\ELECTRIC_METER\ApparentDemand.csv
+        units: unitless
+      type: float
+      attrs:
+        units: unitless
+
+#-----------------------------------------------------------------
+quality_management:
+  #---------------------------------------------------------------
+  manage_missing_coordinates:
+    checker:
+      classname: tsdat.qc.checkers.CheckMissing
+    handlers:
+      - classname: tsdat.qc.handlers.FailPipeline
+    variables:
+      - COORDS
+
+  manage_coordinate_monotonicity:
+    checker:
+      classname: tsdat.qc.checkers.CheckMonotonic
+    handlers:
+      - classname: tsdat.qc.handlers.FailPipeline
+    variables:
+      - COORDS
+
+  #---------------------------------------------------------------
+  manage_missing_values:
+    checker:
+      classname: tsdat.qc.checkers.CheckMissing
+    handlers:
+      - classname: tsdat.qc.handlers.RemoveFailedValues
+    variables:
+      - DATA_VARS
+
+  #---------------------------------------------------------------
+  manage_small_gap_values:
+    checker:
+      classname: pipeline.qc.CheckGap
+      parameters:
+        min_time_gap: 0
+        max_time_gap: 60
+        meaning: "Gap spans less than 60 minutes"
+    handlers:
+      - classname: pipeline.qc.ReplaceFailedValuesWithLinear
+    variables:
+      - DATA_VARS
+
+  #---------------------------------------------------------------
+  manage_big_gap_values:
+    checker:
+      classname: pipeline.qc.CheckGap
+      parameters:
+        min_time_gap: 60
+        max_time_gap: 1440
+        variables: All
+        meaning: "Gap spans more than 60 minutes and less than a day"
+    handlers:
+      - classname: pipeline.qc.ReplaceFailedValuesWithKNN
+    variables:
+      - time
+
+  #---------------------------------------------------------------
+  manage_day_gap_values:
+    checker:
+      classname: pipeline.qc.CheckGap
+      parameters:
+        min_time_gap: 1440
+        max_time_gap: 999999
+        variables: All
+        meaning: "Gap spans more than a day"
+    handlers:
+      - classname: pipeline.qc.ReplaceFailedValuesWithNMF
+    variables:
+      - time
