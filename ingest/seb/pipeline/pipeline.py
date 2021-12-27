@@ -123,28 +123,32 @@ class Pipeline(IngestPipeline):
             ax.xaxis.set_major_formatter(mpl.dates.DateFormatter(date_format))
             plt.setp(ax.xaxis.get_majorticklabels(), rotation=0, ha="center")
 
-        for var in dataset.data_vars:
-            nm = var.replace("\\", "/").rsplit("/")[-1]
-            filename = DSUtil.get_plot_filename(dataset, nm, "png")
-            with self.storage._tmp.get_temp_filepath(filename) as tmp_path:
+        ds = dataset
 
-                # Create the figure and axes objects
-                fig, ax = plt.subplots(
-                    nrows=1, ncols=1, figsize=(14, 8), constrained_layout=True
-                )
-                fig.suptitle(nm)
+        for var in ds.data_vars:
+            if "qc" not in var:
+                nm = var.replace("\\", "/").rsplit("/")[-1]
+                filename = DSUtil.get_plot_filename(ds, nm, "png")
+                with self.storage._tmp.get_temp_filepath(filename) as tmp_path:
 
-                dataset[var].plot()
+                    # Create the figure and axes objects
+                    fig, ax = plt.subplots(
+                        nrows=1, ncols=1, figsize=(14, 8), constrained_layout=True
+                    )
+                    fig.suptitle(nm)
 
-                # Set the labels and ticks
-                # format_time_xticks(ax)
-                ax.set_title("")  # Remove bogus title created by xarray
-                ax.set_xlabel("Time (UTC)")
-                # ax.set_ylabel(r"Wind Speed (ms$^{-1}$)")
+                    ds[var].plot(label="Raw data")
+                    ds[var].where(ds["qc_" + var]).plot(label="QC inserted")
+                    plt.legend()
+                    # Set the labels and ticks
+                    # format_time_xticks(ax)
+                    ax.set_title("")  # Remove title created by xarray
+                    ax.set_xlabel("Time (UTC)")
+                    # ax.set_ylabel(r"Wind Speed (ms$^{-1}$)")
 
-                # Save the figure
-                fig.savefig(tmp_path, dpi=100)
-                self.storage.save(tmp_path)
-                plt.close()
+                    # Save the figure
+                    fig.savefig(tmp_path, dpi=100)
+                    self.storage.save(tmp_path)
+                    plt.close()
 
         return

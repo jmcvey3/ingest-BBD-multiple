@@ -264,7 +264,7 @@ quality_management:
     handlers:
       - classname: tsdat.qc.handlers.FailPipeline
     variables:
-      - COORDS
+      - time
 
   manage_coordinate_monotonicity:
     checker:
@@ -272,7 +272,7 @@ quality_management:
     handlers:
       - classname: tsdat.qc.handlers.FailPipeline
     variables:
-      - COORDS
+      - time
 
   #---------------------------------------------------------------
   manage_missing_values:
@@ -290,9 +290,13 @@ quality_management:
       parameters:
         min_time_gap: 0
         max_time_gap: 60
-        meaning: "Gap spans less than 60 minutes"
     handlers:
       - classname: pipeline.qc.ReplaceFailedValuesWithLinear
+      - classname: tsdat.qc.handlers.RecordQualityResults
+        parameters:
+          bit: 1
+          assessment: Bad
+          meaning: "Gap spans less than 60 minutes"
     variables:
       - DATA_VARS
 
@@ -303,12 +307,17 @@ quality_management:
       parameters:
         min_time_gap: 60
         max_time_gap: 1440
-        variables: All
-        meaning: "Gap spans more than 60 minutes and less than a day"
     handlers:
       - classname: pipeline.qc.ReplaceFailedValuesWithKNN
+        parameters:
+          correlation_thresh: 0.3
+      - classname: tsdat.qc.handlers.RecordQualityResults
+        parameters:
+          bit: 2
+          assessment: Bad
+          meaning: "Gap spans more than 60 minutes and less than a day"
     variables:
-      - time
+      - DATA_VARS
 
   #---------------------------------------------------------------
   manage_day_gap_values:
@@ -317,9 +326,14 @@ quality_management:
       parameters:
         min_time_gap: 1440
         max_time_gap: 999999
-        variables: All
-        meaning: "Gap spans more than a day"
     handlers:
-      - classname: pipeline.qc.ReplaceFailedValuesWithNMF
+      - classname: pipeline.qc.ReplaceFailedValuesWithKNN
+        parameters:
+          correlation_thresh: 0.3
+      - classname: tsdat.qc.handlers.RecordQualityResults
+        parameters:
+          bit: 3
+          assessment: Bad
+          meaning: "Gap spans more than a day"
     variables:
-      - time
+      - DATA_VARS

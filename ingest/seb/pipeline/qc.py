@@ -7,66 +7,6 @@ from typing import Optional
 from tsdat import DSUtil, QualityChecker, QualityHandler
 
 
-class DummyQCTest(QualityChecker):
-    """-------------------------------------------------------------------
-    Class containing placeholder code to perform a single QC test on a
-    Dataset variable.
-
-    See https://tsdat.readthedocs.io/ for more QC examples.
-    -------------------------------------------------------------------"""
-
-    def run(self, variable_name: str) -> Optional[np.ndarray]:
-        """-------------------------------------------------------------------
-        Test a dataset's variable to see if it passes a quality check.
-        These tests can be performed on the entire variable at one time by
-        using xarray vectorized numerical operators.
-
-        Args:
-            variable_name (str):  The name of the variable to check
-
-        Returns:
-            np.ndarray | None: If the test was performed, return a
-            ndarray of the same shape as the variable. Each value in the
-            data array will be either True or False, depending upon the
-            results of the test.  True means the test failed.  False means
-            it succeeded.
-
-            Note that we are using an np.ndarray instead of an xr.DataArray
-            because the DataArray contains coordinate indexes which can
-            sometimes get out of sync when performing np arithmectic vector
-            operations.  So it's easier to just use numpy arrays.
-
-            If the test was skipped for some reason (i.e., it was not
-            relevant given the current attributes defined for this dataset),
-            then the run method should return None.
-        -------------------------------------------------------------------"""
-
-        # Just return an array of all False of same shape as the variable
-        return np.full_like(self.ds[variable_name].data, False, dtype=bool)
-
-
-class DummyErrorHandler(QualityHandler):
-    """-------------------------------------------------------------------
-    Class containing placeholder code for a custom error handler.
-
-    See https://tsdat.readthedocs.io/ for more QC examples.
-    -------------------------------------------------------------------"""
-
-    def run(self, variable_name: str, results_array: np.ndarray):
-        """-------------------------------------------------------------------
-        Perform a follow-on action if a qc test fails.  This can be used to
-        correct data if needed (such as replacing a bad value with missing value,
-        emailing a contact persion, adding additional metadata, or raising an
-        exception if the failure constitutes a critical error).
-
-        Args:
-            variable_name (str): Name of the variable that failed
-            results_array (np.ndarray)  : An array of True/False values for
-            each data value of the variable.  True means the test failed.
-        -------------------------------------------------------------------"""
-        print(f"QC test failed for variable {variable_name}")
-
-
 class RemoveFailedValues(QualityHandler):
     """-------------------------------------------------------------------
     Replace all the failed values with _FillValue
@@ -104,8 +44,7 @@ class ReplaceFailedValuesWithForwardFill(QualityHandler):
     -------------------------------------------------------------------"""
 
     def run(self, variable_name: str, results_array: np.ndarray):
-        results = self.ds[variable_name].where(~results_array)
-        da = self.ds[variable_name].where(results != 0)
+        da = self.ds[variable_name].where(~results_array)
         da = da.ffill("time", limit=None)
         self.ds[variable_name] = da
 
@@ -116,8 +55,7 @@ class ReplaceFailedValuesWithLinear(QualityHandler):
     -------------------------------------------------------------------"""
 
     def run(self, variable_name: str, results_array: np.ndarray):
-        results = self.ds[variable_name].where(~results_array)
-        da = self.ds[variable_name].where(results != 0)
+        da = self.ds[variable_name].where(~results_array)
         da = da.interpolate_na(
             dim="time",
             method="linear",
@@ -134,8 +72,7 @@ class ReplaceFailedValuesWithPolynomial(QualityHandler):
     -------------------------------------------------------------------"""
 
     def run(self, variable_name: str, results_array: np.ndarray):
-        results = self.ds[variable_name].where(~results_array)
-        da = self.ds[variable_name].where(results != 0)
+        da = self.ds[variable_name].where(~results_array)
         da = da.interpolate_na(
             dim="time", method="polynomial", order=2, limit=None, keep_attrs=True
         )
@@ -148,20 +85,15 @@ class ReplaceFailedValuesWithKNN(QualityHandler):
     -------------------------------------------------------------------"""
 
     def run(self, variable_name: str, results_array: np.ndarray):
-
         if results_array.any():
-            # If max value isn't = 0, replace 0s with nan
-            for var in self.ds.data_vars:
-                if self.ds[var].max() != 0:
-                    self.ds[var] = self.ds[var].where(self.ds[var] != 0)
+            self.ds[variable_name] = self.ds[variable_name].where(~results_array)
 
             # Run KNN using correlated "features" (column names) that meet a correlation threshold
             # Group correlated columns
             df = self.ds.to_dataframe()
             correlation_df = df.corr(method="spearman")
 
-            correlation_threshold = 0.5  # Set this in config somehow?
-            idp = np.array(np.where(correlation_df > correlation_threshold))
+            idp = np.array(np.where(correlation_df > self.params["correlation_thresh"]))
             # Remove self-correlated features
             idx = idp[:, ~(idp[0] == idp[1])]
 
@@ -183,28 +115,31 @@ class ReplaceFailedValuesWithKNN(QualityHandler):
                 # if the inner "for" loop doesn't run
                 if len(d[j]) == 1:
                     d[j] = []
-            # Run grouped columns through KNN imputation
-            already_run = []
+
+            var_to_knn = []
             for i in range(len(d)):
                 # Use dataframe b/c we already converted it
                 var = df.columns[d[i]]
-                # Check to see if already run or empty
-                if any([nm for nm in var if nm in already_run]):
-                    pass
-                elif not any(var):
-                    pass
-                else:
-                    out = KNNImputer(n_neighbors=3).fit_transform(df[var])
-                    # add output directly into dataset
-                    for i, nm in enumerate(var):
-                        self.ds[nm].values = out[:, i]
-                    already_run.extend(var)
+                if variable_name in var:
+                    var_to_knn.extend(var)
 
-            not_run = list(set(df.columns.values) - set(already_run))
+            # Run grouped columns through KNN imputation
+            if len(var_to_knn) > 1:
+                var_to_knn = np.unique(var_to_knn)
+                out = KNNImputer(n_neighbors=3).fit_transform(df[var_to_knn])
 
-            for col in not_run:
-                data = df[col].fillna(value=df[col].median())
-                self.ds[col].values = data.values
+                # add output directly into dataset
+                idx = np.where(variable_name in var_to_knn)[0][0]
+                self.ds[variable_name].values = out[:, idx]
+            else:
+                # Fills in all nans
+                self.ds[variable_name] = self.ds[variable_name].fillna(
+                    self.ds[variable_name].median()
+                )
+                # Only replace nan data in results array, ignores time before data started being saved
+                # self.ds[variable_name] = self.ds[variable_name].where(
+                #     ~results_array, other=df[variable_name].median()
+                # )
 
 
 class ReplaceFailedValuesWithNMF(QualityHandler):
@@ -213,24 +148,20 @@ class ReplaceFailedValuesWithNMF(QualityHandler):
     -------------------------------------------------------------------"""
 
     def run(self, variable_name: str, results_array: np.ndarray):
-
         if results_array.any():
-            # TODO Scikit learn version can't handle missing values
-            # # If max value isn't = 0, replace 0s with nan
-            # for var in self.ds.data_vars:
-            #     if self.ds[var].max() != 0:
-            #         self.ds[var] = self.ds[var].where(self.ds[var] != 0)
+            self.ds[variable_name] = self.ds[variable_name].where(~results_array)
 
+            # TODO Scikit learn version can't handle missing values
             var_names = [i.name for i in self.ds.data_vars]
             nmf_model = NMF(n_components=len(var_names), random_state=0, shuffle=False)
 
             # NMF if the gap is larger than one day
             W = nmf_model.fit_transform(self.ds.to_pandas())
             H = nmf_model.components_
-            data = W.dot(H)
+            out = W.dot(H)
 
-            for nm, i in enumerate(var_names):
-                self.ds[nm].values = data[:, i]
+            idx = np.where(variable_name in var_names)[0]
+            self.ds[variable_name].values = out[:, idx]
 
 
 class CheckGap(QualityChecker):
@@ -238,114 +169,112 @@ class CheckGap(QualityChecker):
         """-------------------------------------------------------------------
         Check the rows with minimum time gap
         -------------------------------------------------------------------"""
+        # Misses nan's at beginning of dataset
         variables = self.params.get("variables", [variable_name])
-        if variables == "All":
-            variables = self.ds.keys()
-        results_arrays = []
+        results_array = []
+        if variables == "All" or variable_name in variables:
+            pass
+        else:
+            return results_array
 
-        for variable_name in variables:
-            fill_value = DSUtil.get_fill_value(self.ds, variable_name)
+        fill_value = DSUtil.get_fill_value(self.ds, variable_name)
 
-            # If the variable has no _FillValue attribute, then
-            # we select a default value to use
-            if fill_value is None:
-                fill_value = np.nan
+        # If the variable has no _FillValue attribute, then
+        # we select a default value to use
+        if fill_value is None:
+            fill_value = np.nan
 
-            # Make sure fill value has same data type as the variable
-            fill_value = np.array(
-                fill_value, dtype=self.ds[variable_name].values.dtype.type
+        # Make sure fill value has same data type as the variable
+        fill_value = np.array(
+            fill_value, dtype=self.ds[variable_name].values.dtype.type
+        )
+
+        # Remove 0's from variables
+        if self.ds[variable_name].max() != 0:
+            self.ds[variable_name] = self.ds[variable_name].where(
+                self.ds[variable_name] != 0
             )
-            # First check if any values are assigned to _FillValue
-            results_array = np.equal(self.ds[variable_name].values, fill_value)
-            # Then, if the value is numeric, we should also check if any values are assigned to NaN
-            if self.ds[variable_name].values.dtype.type in (
-                type(0.0),
-                np.float16,
-                np.float32,
-                np.float64,
-            ):
-                results_array |= np.isnan(self.ds[variable_name].values)
 
-            # TODO: we also need to check if any values are outside valid range
-            # TODO: in the config file, we need a replace with missing handler for this test
+        # First check if any values are assigned to _FillValue
+        results_array = np.equal(self.ds[variable_name].values, fill_value)
+        # Then, if the value is numeric, we should also check if any values are assigned to NaN
+        if self.ds[variable_name].values.dtype.type in (
+            type(0.0),
+            np.float16,
+            np.float32,
+            np.float64,
+        ):
+            results_array |= np.isnan(self.ds[variable_name].values)
 
-            keep_array = np.logical_not(results_array)
-            timestamp = self.ds["time"].data
+        keep_array = np.logical_not(results_array)
+        timestamp = self.ds["time"].data
 
-            min_time_gap = self.params.get("min_time_gap", 0)
-            max_time_gap = self.params.get("max_time_gap", 0)
+        min_time_gap = self.params.get("min_time_gap", 0)
+        max_time_gap = self.params.get("max_time_gap", 0)
 
-            df = pd.DataFrame({"time": timestamp, "status": keep_array})
-            missing_data = df[df["status"] == 0]
-            data_max_time = 0
+        df = pd.DataFrame({"time": timestamp, "status": keep_array})
+        missing_data = df[df["status"] == 0]
+        data_max_time = 0
 
-            if not missing_data.empty:
-                start_index = missing_data.head(1).index.values[0]
-                end_index = missing_data.tail(1).index.values[0]
-                start_time_list = []
-                end_time_list = []
+        if not missing_data.empty:
+            start_index = missing_data.head(1).index.values[0]
+            end_index = missing_data.tail(1).index.values[0]
+            start_time_list = []
+            end_time_list = []
 
-                for index, data in missing_data.iterrows():
-                    if start_index == index:
-                        pre_index = index
-                        continue
+            for index, data in missing_data.iterrows():
+                if start_index == index:
+                    pre_index = index
+                    continue
 
-                    if pre_index == index - 1:
-                        pre_index = index
+                if pre_index == index - 1:
+                    pre_index = index
 
-                    elif pre_index != index - 1:
-                        time_gap = (
-                            missing_data["time"][pre_index]
-                            - missing_data["time"][start_index]
-                        )
+                elif pre_index != index - 1:
+                    time_gap = (
+                        missing_data["time"][pre_index]
+                        - missing_data["time"][start_index]
+                    )
 
-                        if (time_gap.seconds / 60) > data_max_time:
-                            data_max_time = time_gap.seconds / 60
+                    if (time_gap.seconds / 60) > data_max_time:
+                        data_max_time = time_gap.seconds / 60
 
-                        if min_time_gap < (time_gap.seconds / 60) < max_time_gap:
-                            start_time_list.append(start_index)
-                            end_time_list.append(pre_index)
+                    if min_time_gap < (time_gap.seconds / 60) < max_time_gap:
+                        start_time_list.append(start_index)
+                        end_time_list.append(pre_index)
 
-                        pre_index = index
-                        start_index = index
+                    pre_index = index
+                    start_index = index
 
-                    if index == end_index:
-                        time_gap = (
-                            missing_data["time"][pre_index]
-                            - missing_data["time"][start_index]
-                        )
-                        if min_time_gap < (time_gap.seconds / 60) < max_time_gap:
-                            start_time_list.append(start_index)
-                            end_time_list.append(pre_index)
+                if index == end_index:
+                    time_gap = (
+                        missing_data["time"][pre_index]
+                        - missing_data["time"][start_index]
+                    )
+                    if min_time_gap < (time_gap.seconds / 60) < max_time_gap:
+                        start_time_list.append(start_index)
+                        end_time_list.append(pre_index)
 
-            else:
-                start_time_list = []
-                end_time_list = []
+        else:
+            start_time_list = []
+            end_time_list = []
+        if len(start_time_list):
             print(
                 f"Max time gap --> {data_max_time} minutes, [min: {min_time_gap}, max: {max_time_gap}], Number of missing gaps: {len(start_time_list)} --> {variable_name}"
             )
 
-            keep_index = list(range(len(timestamp)))
+        keep_index = list(range(len(timestamp)))
 
-            rev_start_time_list = start_time_list[::-1]
-            rev_end_time_list = end_time_list[::-1]
+        rev_start_time_list = start_time_list[::-1]
+        rev_end_time_list = end_time_list[::-1]
 
-            for count, i in enumerate(rev_start_time_list):
-                del keep_index[
-                    rev_start_time_list[count] : rev_end_time_list[count] + 1
-                ]
+        for count, i in enumerate(rev_start_time_list):
+            del keep_index[rev_start_time_list[count] : rev_end_time_list[count] + 1]
 
-            if keep_index:
-                final_results_array = np.full(self.ds[variable_name].data.shape, True)
-                final_results_array[np.array(keep_index)] = False
-            else:
-                final_results_array = np.full(self.ds[variable_name].data.shape, True)
-
-            results_arrays.append(final_results_array)
-
-        final_results_array = np.full(self.ds[variable_name].data.shape, False)
-
-        for results_array in results_arrays:
-            final_results_array |= results_array
+        if keep_index:
+            final_results_array = np.full(self.ds[variable_name].data.shape, True)
+            final_results_array[np.array(keep_index)] = False
+        else:
+            final_results_array = np.full(self.ds[variable_name].data.shape, True)
 
         return final_results_array

@@ -27,3 +27,7 @@ storage:
       netcdf:
         file_extension: ".nc"
         classname: tsdat.io.filehandlers.NetCdfHandler
+
+      csv:
+        file_extension: ".csv"
+        classname: tsdat.io.filehandlers.CsvHandler

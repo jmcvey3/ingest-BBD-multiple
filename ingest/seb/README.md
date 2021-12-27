@@ -1,4 +1,4 @@
-# SEB_buildings in Richland
+# SEB Example Data
 
 BBD buildings data pipeline example ingest
 
