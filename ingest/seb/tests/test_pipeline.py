@@ -13,6 +13,15 @@ def test_seb_pipeline():
         expand("config/pipeline_config_seb.yml", parent),
         expand("config/storage_config_seb.yml", parent),
     )
-    output = pipeline.run(expand("tests/data/input/data.csv", parent))
-    expected = xr.open_dataset(expand("tests/data/expected/data.csv", parent))
+    output = pipeline.run(
+        expand("tests/data/input/selected_raw_merge_data_2019_2020.csv", parent)
+    )
+    expected = xr.open_dataset(
+        expand(
+            "tests/data/expected/SEB.BBD-parameters-1min.b1.20190801.003400.csv", parent
+        )
+    )
     xr.testing.assert_allclose(output, expected)
+
+if __name__=='__main__':
+    test_seb_pipeline()
