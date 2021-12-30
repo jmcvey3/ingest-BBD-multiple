@@ -286,12 +286,12 @@ quality_management:
   #---------------------------------------------------------------
   manage_small_gap_values:
     checker:
-      classname: pipeline.qc.CheckGap
+      classname: ingest.seb.pipeline.qc.CheckGap
       parameters:
         min_time_gap: 0
         max_time_gap: 60
     handlers:
-      - classname: pipeline.qc.ReplaceFailedValuesWithLinear
+      - classname: ingest.seb.pipeline.qc.ReplaceFailedValuesWithLinear
       - classname: tsdat.qc.handlers.RecordQualityResults
         parameters:
           bit: 1
@@ -303,12 +303,12 @@ quality_management:
   #---------------------------------------------------------------
   manage_big_gap_values:
     checker:
-      classname: pipeline.qc.CheckGap
+      classname: ingest.seb.pipeline.qc.CheckGap
       parameters:
         min_time_gap: 60
         max_time_gap: 1440
     handlers:
-      - classname: pipeline.qc.ReplaceFailedValuesWithKNN
+      - classname: ingest.seb.pipeline.qc.ReplaceFailedValuesWithKNN
         parameters:
           correlation_thresh: 0.3
       - classname: tsdat.qc.handlers.RecordQualityResults
@@ -322,12 +322,12 @@ quality_management:
   #---------------------------------------------------------------
   manage_day_gap_values:
     checker:
-      classname: pipeline.qc.CheckGap
+      classname: ingest.seb.pipeline.qc.CheckGap
       parameters:
         min_time_gap: 1440
         max_time_gap: 999999
     handlers:
-      - classname: pipeline.qc.ReplaceFailedValuesWithKNN
+      - classname: ingest.seb.pipeline.qc.ReplaceFailedValuesWithKNN
         parameters:
           correlation_thresh: 0.3
       - classname: tsdat.qc.handlers.RecordQualityResults

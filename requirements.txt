@@ -6,3 +6,4 @@ matplotlib
 act-atmos
 parse
 typer
+scikit-learn

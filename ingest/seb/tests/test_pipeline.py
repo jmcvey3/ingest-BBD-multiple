@@ -18,10 +18,11 @@ def test_seb_pipeline():
     )
     expected = xr.open_dataset(
         expand(
-            "tests/data/expected/SEB.BBD-parameters-1min.b1.20190801.003400.csv", parent
+            "tests/data/expected/SEB.BBD-parameters-1min.b1.20190801.003400.nc", parent
         )
     )
     xr.testing.assert_allclose(output, expected)
 
-if __name__=='__main__':
+
+if __name__ == "__main__":
     test_seb_pipeline()
