@@ -11,9 +11,9 @@
             "program": "${file}",
             "justMyCode": false,
             "console": "integratedTerminal",
-            "env": {
-                "PYDEVD_WARN_EVALUATION_TIMEOUT": "500"
-            }
+            // "env": {
+            //     "PYDEVD_WARN_EVALUATION_TIMEOUT": "500"
+            // }
         }
     ]
 }
