@@ -94,12 +94,13 @@ class ReplaceFailedValuesWithKNN(QualityHandler):
             self.ds[variable_name] = self.ds[variable_name].where(~results_array)
 
             # Run KNN using correlated "features" (column names) that meet a correlation threshold
-            # Group correlated columns
             df = self.ds.to_dataframe()
 
+            # Create correlation matrix for entire dataset
             if not hasattr(self, "correlation_df"):
                 self.correlation_df = df.corr(method="spearman")
 
+            # Get columns correlated to the current variable
             idp = np.where(
                 self.correlation_df[variable_name] > self.params["correlation_thresh"]
             )[0]
@@ -108,22 +109,21 @@ class ReplaceFailedValuesWithKNN(QualityHandler):
             if len(idp) > 1:
                 out = KNNImputer(n_neighbors=3).fit_transform(df.iloc[:, idp])
 
-                # Add output directly into dataset
+                # Get index of current variable in correlation matrix
                 var_index = np.where(variable_name == self.correlation_df.index.values)[
                     0
                 ][0]
+                # Get index of current variable in KNN output
                 out_index = np.where(var_index == idp)[0][0]
+                # Add output directly into dataset
                 self.ds[variable_name].values = out[:, out_index].squeeze()
+
+            # Current variable isn't correlated with anything
             else:
-                # Fills in all nans
+                # Fills in all nans with median value
                 self.ds[variable_name] = self.ds[variable_name].fillna(
                     self.ds[variable_name].median()
                 )
-                # Only replace nan data in results array,
-                # This code ignores replacing leading nans (before data starts being collected)
-                # self.ds[variable_name] = self.ds[variable_name].where(
-                #     ~results_array, other=df[variable_name].median()
-                # )
 
 
 class ReplaceFailedValuesWithNMF(QualityHandler):
