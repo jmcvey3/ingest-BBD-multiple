@@ -190,8 +190,7 @@ class CheckGap(QualityChecker):
         # nan values are true, non-nan values are false
         missing = self.check_missing(variable_name)
 
-        fs = 1  # min, time interval
-        # timestamp = self.ds["time"].data
+        fs = 1  # 1/min, sampling time interval
 
         min_time_gap = self.params.get("min_time_gap", 0)
         max_time_gap = self.params.get("max_time_gap", 0)
@@ -234,7 +233,9 @@ class CheckGap(QualityChecker):
             # if all data is missing, return all False
             return results_array
 
-        if any(total_gaps > min_time_gap) and not any(total_gaps <= max_time_gap * fs):
+        if any(total_gaps > min_time_gap * fs) and not any(
+            total_gaps <= max_time_gap * fs
+        ):
             # if gaps of missing data aren't between min and max, return all False
             return results_array
 
@@ -249,7 +250,9 @@ class CheckGap(QualityChecker):
             )
 
         # Check to see how large each gap is
-        gap_to_fix = [x for x in total_gaps if x > min_time_gap and x <= max_time_gap]
+        gap_to_fix = [
+            x for x in total_gaps if x > min_time_gap * fs and x <= max_time_gap * fs
+        ]
 
         # Print gap size
         if gap_to_fix:
@@ -257,7 +260,7 @@ class CheckGap(QualityChecker):
                 f"Max time gap --> {max(gap_to_fix)*fs} minutes, [min: {min_time_gap}, max: {max_time_gap}], Number of missing gaps: {len(gap_to_fix)} --> {variable_name}"
             )
 
-        # Create results_array give the min and max time gap
+        # Create results_array
         for gap in gap_to_fix:
             results_array[gap_indices[gap]] = True
 
