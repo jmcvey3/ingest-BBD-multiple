@@ -21,7 +21,7 @@ def test_seb_pipeline():
             "tests/data/expected/SEB.BBD-parameters-1min.b1.20190801.003400.nc", parent
         )
     )
-    xr.testing.assert_allclose(output, expected)
+    xr.testing.assert_allclose(output, expected, atol=1e-5)
 
 
 if __name__ == "__main__":

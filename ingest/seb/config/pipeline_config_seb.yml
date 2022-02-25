@@ -310,7 +310,7 @@ quality_management:
     handlers:
       - classname: ingest.seb.pipeline.qc.ReplaceFailedValuesWithKNN
         parameters:
-          correlation_thresh: 0.3
+          correlation_thresh: 0.5
       - classname: tsdat.qc.handlers.RecordQualityResults
         parameters:
           bit: 2

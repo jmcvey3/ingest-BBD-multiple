@@ -5,7 +5,6 @@ from ingest.seb import Pipeline
 from utils import expand, set_env
 
 
-# TODO – Developer: Update path to data and/or configuration files as needed.
 if __name__ == "__main__":
     set_env()
     pipeline = Pipeline(
