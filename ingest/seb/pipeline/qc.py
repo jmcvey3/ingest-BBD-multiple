@@ -15,6 +15,7 @@ class RemoveFailedValues(QualityHandler):
     def run(self, variable_name: str, results_array: np.ndarray):
         if results_array.any():
             fill_value = DSUtil.get_fill_value(self.ds, variable_name)
+
             self.ds[variable_name] = self.ds[variable_name].where(
                 ~results_array, fill_value
             )
@@ -49,7 +50,10 @@ class ReplaceFailedValuesWithForwardFill(QualityHandler):
         if results_array.any():
             da = self.ds[variable_name].where(~results_array)
             da = da.ffill("time", limit=None)
-            self.ds[variable_name] = da
+
+            self.ds[variable_name][np.where(results_array)] = da[
+                np.where(results_array)
+            ]
 
 
 class ReplaceFailedValuesWithLinear(QualityHandler):
@@ -67,7 +71,9 @@ class ReplaceFailedValuesWithLinear(QualityHandler):
                 limit=None,
                 keep_attrs=True,
             )
-            self.ds[variable_name] = da
+            self.ds[variable_name][np.where(results_array)] = da[
+                np.where(results_array)
+            ]
 
 
 class ReplaceFailedValuesWithPolynomial(QualityHandler):
@@ -81,7 +87,9 @@ class ReplaceFailedValuesWithPolynomial(QualityHandler):
             da = da.interpolate_na(
                 dim="time", method="polynomial", order=2, limit=None, keep_attrs=True
             )
-            self.ds[variable_name] = da
+            self.ds[variable_name][np.where(results_array)] = da[
+                np.where(results_array)
+            ]
 
 
 class ReplaceFailedValuesWithKNN(QualityHandler):
@@ -116,10 +124,13 @@ class ReplaceFailedValuesWithKNN(QualityHandler):
                 # Get index of current variable in KNN output
                 out_index = np.where(var_index == idp)[0][0]
                 # Add output directly into dataset
-                self.ds[variable_name].values = out[:, out_index].squeeze()
+                # Only replace certain values
+                self.ds[variable_name].values[np.where(results_array)] = out[
+                    :, out_index
+                ].squeeze()[np.where(results_array)]
 
-            # Current variable isn't correlated with anything
             else:
+                # Current variable isn't correlated with anything
                 # Fills in all nans with median value
                 self.ds[variable_name] = self.ds[variable_name].fillna(
                     self.ds[variable_name].median()
@@ -145,12 +156,13 @@ class ReplaceFailedValuesWithNMF(QualityHandler):
             out = W.dot(H)
 
             idx = np.where(variable_name in var_names)[0]
-            self.ds[variable_name].values = out[:, idx]
+            self.ds[variable_name].values[np.where(results_array)] = out[:, idx][
+                np.where(results_array)
+            ]
 
 
 class CheckGap(QualityChecker):
     def check_missing(self, variable_name: str) -> Optional[np.ndarray]:
-
         # If this is a time variable, we check for 'NaT'
         if self.ds[variable_name].data.dtype.type == np.datetime64:
             results_array = np.isnat(self.ds[variable_name].data)
@@ -245,23 +257,24 @@ class CheckGap(QualityChecker):
         # (dictionary items are the indices of ds[variable] containing nans)
         gap_indices = {}
         for i, g in enumerate(total_gaps):
-            gap_indices[g] = (
+            gap_indices[i] = (
                 np.arange(gap_index[i], gap_index[i] + g) + np.sum(total_gaps[:i]) - i
             )
 
         # Check to see how large each gap is
-        gap_to_fix = [
-            x for x in total_gaps if x > min_time_gap * fs and x <= max_time_gap * fs
-        ]
+        gap_idx_to_fix = []
+        gap_to_fix = []
+        for i, x in enumerate(total_gaps):
+            if x > min_time_gap and x <= max_time_gap:
+                gap_idx_to_fix.append(i)
+                gap_to_fix.append(x)
 
-        # Print gap size
-        if gap_to_fix:
+        if gap_idx_to_fix:
             print(
                 f"Max time gap --> {max(gap_to_fix)*fs} minutes, [min: {min_time_gap}, max: {max_time_gap}], Number of missing gaps: {len(gap_to_fix)} --> {variable_name}"
             )
-
         # Create results_array
-        for gap in gap_to_fix:
-            results_array[gap_indices[gap]] = True
+        for i in range(len(gap_to_fix)):
+            results_array[gap_indices[i]] = True
 
         return results_array
