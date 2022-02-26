@@ -257,8 +257,8 @@ class CheckGap(QualityChecker):
         # (dictionary items are the indices of ds[variable] containing nans)
         gap_indices = {}
         for i, g in enumerate(total_gaps):
-            gap_indices[i] = (
-                np.arange(gap_index[i], gap_index[i] + g) + np.sum(total_gaps[:i]) - i
+            gap_indices[i] = np.arange(gap_index[i], gap_index[i] + g) + np.sum(
+                total_gaps[:i]
             )
 
         # Check to see how large each gap is
