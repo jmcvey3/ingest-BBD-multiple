@@ -6,7 +6,6 @@ from ingest.seb import Pipeline
 parent = os.path.dirname(__file__)
 
 
-# TODO – Developer: Update paths to your input files here. Please add tests if needed.
 def test_seb_pipeline():
     set_env()
     pipeline = Pipeline(

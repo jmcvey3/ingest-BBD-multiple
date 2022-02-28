@@ -2,9 +2,7 @@
 
 BBD buildings data pipeline example ingest
 
-<!-- # TODO – Developer: Add more to the ingest description here -->
-
-Writen by [James McVey](mailto:james.mcvey@pnnl.gov)
+Written by [James McVey](mailto:james.mcvey@pnnl.gov)
 
 ## Ingest Organization
 

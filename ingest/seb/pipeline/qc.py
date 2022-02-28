@@ -48,7 +48,7 @@ class ReplaceFailedValuesWithForwardFill(QualityHandler):
 
     def run(self, variable_name: str, results_array: np.ndarray):
         if results_array.any():
-            da = self.ds[variable_name].where(~results_array)
+            da = self.ds[variable_name]
             da = da.ffill("time", limit=None)
 
             self.ds[variable_name][np.where(results_array)] = da[
@@ -63,7 +63,7 @@ class ReplaceFailedValuesWithLinear(QualityHandler):
 
     def run(self, variable_name: str, results_array: np.ndarray):
         if results_array.any():
-            da = self.ds[variable_name].where(~results_array)
+            da = self.ds[variable_name]
             da = da.interpolate_na(
                 dim="time",
                 method="linear",
@@ -83,7 +83,7 @@ class ReplaceFailedValuesWithPolynomial(QualityHandler):
 
     def run(self, variable_name: str, results_array: np.ndarray):
         if results_array.any():
-            da = self.ds[variable_name].where(~results_array)
+            da = self.ds[variable_name]
             da = da.interpolate_na(
                 dim="time", method="polynomial", order=2, limit=None, keep_attrs=True
             )
@@ -99,8 +99,6 @@ class ReplaceFailedValuesWithKNN(QualityHandler):
 
     def run(self, variable_name: str, results_array: np.ndarray):
         if results_array.any():
-            self.ds[variable_name] = self.ds[variable_name].where(~results_array)
-
             # Run KNN using correlated "features" (column names) that meet a correlation threshold
             df = self.ds.to_dataframe()
 
@@ -144,9 +142,7 @@ class ReplaceFailedValuesWithNMF(QualityHandler):
 
     def run(self, variable_name: str, results_array: np.ndarray):
         if results_array.any():
-            self.ds[variable_name] = self.ds[variable_name].where(~results_array)
-
-            # TODO Scikit learn version can't handle missing values
+            # !!! Scikit learn version can't handle missing values
             var_names = [i.name for i in self.ds.data_vars]
             nmf_model = NMF(n_components=len(var_names), random_state=0, shuffle=False)
 
@@ -206,8 +202,6 @@ class CheckGap(QualityChecker):
 
         min_time_gap = self.params.get("min_time_gap", 0)
         max_time_gap = self.params.get("max_time_gap", 0)
-
-        missing = self.check_missing(variable_name)
 
         self.ds[variable_name] = self.ds[variable_name].where(~missing)
 
