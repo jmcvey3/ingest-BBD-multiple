@@ -98,14 +98,13 @@ class ReplaceFailedValuesWithKNN(QualityHandler):
     -------------------------------------------------------------------"""
 
     def run(self, variable_name: str, results_array: np.ndarray):
+        # Run KNN using correlated "features" (column names) that meet a correlation threshold
+        # Create correlation matrix for entire dataset
+        df = self.ds.to_dataframe()
+        if not hasattr(self, "correlation_df"):
+            self.correlation_df = df.corr(method="spearman")
+
         if results_array.any():
-            # Run KNN using correlated "features" (column names) that meet a correlation threshold
-            df = self.ds.to_dataframe()
-
-            # Create correlation matrix for entire dataset
-            if not hasattr(self, "correlation_df"):
-                self.correlation_df = df.corr(method="spearman")
-
             # Get columns correlated to the current variable
             idp = np.where(
                 self.correlation_df[variable_name] > self.params["correlation_thresh"]
@@ -237,12 +236,6 @@ class CheckGap(QualityChecker):
 
         if total_gaps[0] == self.ds[variable_name].size:
             # if all data is missing, return all False
-            return results_array
-
-        if any(total_gaps > min_time_gap * fs) and not any(
-            total_gaps <= max_time_gap * fs
-        ):
-            # if gaps of missing data aren't between min and max, return all False
             return results_array
 
         # Otherwise, if there are gaps, find what index they are in

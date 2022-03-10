@@ -2,7 +2,6 @@ import tsdat
 import xarray as xr
 
 
-# TODO – Developer: Write your FileHandler and add documentation
 class CustomFileHandler(tsdat.AbstractFileHandler):
     """--------------------------------------------------------------------------------
     Custom file handler for reading <some data type> files from a <instrument name>.
