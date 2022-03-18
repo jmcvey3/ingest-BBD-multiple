@@ -261,7 +261,7 @@ class CheckGap(QualityChecker):
                 f"Max time gap --> {max(gap_to_fix)*fs} minutes, [min: {min_time_gap}, max: {max_time_gap}], Number of missing gaps: {len(gap_to_fix)} --> {variable_name}"
             )
         # Create results_array
-        for i in range(len(gap_to_fix)):
+        for i in gap_idx_to_fix:
             results_array[gap_indices[i]] = True
 
         return results_array
