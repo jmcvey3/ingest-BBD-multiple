@@ -217,9 +217,10 @@ class CheckGap(QualityChecker):
                 .sum()
                 .values
             )
-            gap_size = np.pad(
-                gap_size, [(1, 0)], mode="constant"
-            )  # pad 1 zero in front b/c above algorithm skips 1 index place
+            if not np.isnan(ds[variable_name][0]):
+                gap_size = np.pad(
+                    gap_size, [(1, 0)], mode="constant"
+                )  # pad 1 zero in front b/c above algorithm skips 1 index place
         else:
             return missing
 
