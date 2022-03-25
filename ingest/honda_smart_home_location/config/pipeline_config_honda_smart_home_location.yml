@@ -1,3 +1,9 @@
+# TODO – Developer: Fill out this file. You can find the official documentation at
+# https://github.com/tsdat/tsdat/blob/main/examples/templates/ingest_pipeline_template.yml
+# or open an existing example in this repository to see what you can do here. Note that
+# the some projects may use slightly different metadata conventions and requirements
+# than tsdat.
+
 pipeline:
   type: Ingest
 
@@ -5,7 +11,7 @@ pipeline:
   location_id: "honda_smart_home_location"
   dataset_name: "honda_smart_home"
   # qualifier: ""
-  temporal: 1min
+  # temporal: ""
   data_level: "b1" # If not applying QC this should be set to "a1"
 
 dataset_definition:
@@ -42,6 +48,2745 @@ dataset_definition:
         standard_name: time
         units: seconds since 1970-01-01T00:00:00
 
+    TAO (degF):
+      input:
+        name: "TAO (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAO (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    RHO (%):
+      input:
+        name: "RHO (%)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: RHO (%)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    WS (mph):
+      input:
+        name: "WS (mph)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: WS (mph)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    WD (deg):
+      input:
+        name: "WD (deg)"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: WD (deg)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    RAIN (mm):
+      input:
+        name: "RAIN (mm)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: RAIN (mm)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    OAP (hPa):
+      input:
+        name: "OAP (hPa)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: OAP (hPa)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    INSOL (W/m2):
+      input:
+        name: "INSOL (W/m2)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: INSOL (W/m2)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    HAIL (hits/cm2):
+      input:
+        name: "HAIL (hits/cm2)"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: HAIL (hits/cm2)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI1 (degF):
+      input:
+        name: "TAI1 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI1 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    RHI1 (%):
+      input:
+        name: "RHI1 (%)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: RHI1 (%)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI2 (degF):
+      input:
+        name: "TAI2 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI2 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    RHI2 (%):
+      input:
+        name: "RHI2 (%)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: RHI2 (%)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAPS (degF):
+      input:
+        name: "TAPS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAPS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    RHPS (%):
+      input:
+        name: "RHPS (%)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: RHPS (%)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI3 (degF):
+      input:
+        name: "TAI3 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI3 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI4 (degF):
+      input:
+        name: "TAI4 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI4 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI5 (degF):
+      input:
+        name: "TAI5 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI5 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI6 (degF):
+      input:
+        name: "TAI6 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI6 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI7 (degF):
+      input:
+        name: "TAI7 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI7 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI8 (degF):
+      input:
+        name: "TAI8 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI8 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI9 (degF):
+      input:
+        name: "TAI9 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI9 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAI10 (degF):
+      input:
+        name: "TAI10 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAI10 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TAVCS (degF):
+      input:
+        name: "TAVCS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TAVCS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    WHAF (inWC):
+      input:
+        name: "WHAF (inWC)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: WHAF (inWC)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SWHF (%):
+      input:
+        name: "SWHF (%)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SWHF (%)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SWA (#Win.Op.):
+      input:
+        name: "SWA (#Win.Op.)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SWA (#Win.Op.)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PDOA (%):
+      input:
+        name: "PDOA (%)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PDOA (%)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SFMB:
+      input:
+        name: "SFMB"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SFMB
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SFMW:
+      input:
+        name: "SFMW"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SFMW
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SFB2:
+      input:
+        name: "SFB2"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SFB2
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SFBW:
+      input:
+        name: "SFBW"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SFBW
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SFMR:
+      input:
+        name: "SFMR"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SFMR
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SFPR:
+      input:
+        name: "SFPR"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SFPR
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SFK:
+      input:
+        name: "SFK"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SFK
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SCM:
+      input:
+        name: "SCM"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SCM
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLCS (degF):
+      input:
+        name: "TLCS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLCS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLDHX (degF):
+      input:
+        name: "TLDHX (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLDHX (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLHS (degF):
+      input:
+        name: "TLHS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLHS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VHPS (Gal):
+      input:
+        name: "VHPS (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VHPS (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VHPL (Gal):
+      input:
+        name: "VHPL (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VHPL (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VCP (Gal):
+      input:
+        name: "VCP (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VCP (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VDSP (Gal):
+      input:
+        name: "VDSP (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VDSP (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VDHW (Gal):
+      input:
+        name: "VDHW (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VDHW (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VPWD (Gal):
+      input:
+        name: "VPWD (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VPWD (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VGW (Gal):
+      input:
+        name: "VGW (Gal)"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: VGW (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VKH (Gal):
+      input:
+        name: "VKH (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VKH (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VKC (Gal):
+      input:
+        name: "VKC (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VKC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMBSHR (Gal):
+      input:
+        name: "VMBSHR (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMBSHR (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMBSHL (Gal):
+      input:
+        name: "VMBSHL (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMBSHL (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMBSCR (Gal):
+      input:
+        name: "VMBSCR (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMBSCR (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMBSCL (Gal):
+      input:
+        name: "VMBSCL (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMBSCL (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMSHH (Gal):
+      input:
+        name: "VMSHH (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMSHH (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMSHC (Gal):
+      input:
+        name: "VMSHC (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMSHC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VBSH (Gal):
+      input:
+        name: "VBSH (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VBSH (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VBSC (Gal):
+      input:
+        name: "VBSC (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VBSC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VBTH (Gal):
+      input:
+        name: "VBTH (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VBTH (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VBTC (Gal):
+      input:
+        name: "VBTC (Gal)"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: VBTC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VCWH (Gal):
+      input:
+        name: "VCWH (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VCWH (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VCWC (Gal):
+      input:
+        name: "VCWC (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VCWC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VFC (Gal):
+      input:
+        name: "VFC (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VFC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMBWC (Gal):
+      input:
+        name: "VMBWC (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMBWC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VBWC (Gal):
+      input:
+        name: "VBWC (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VBWC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VPWC (Gal):
+      input:
+        name: "VPWC (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VPWC (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VCW (Gal):
+      input:
+        name: "VCW (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VCW (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VPWS (Gal):
+      input:
+        name: "VPWS (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VPWS (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLDSS (degF):
+      input:
+        name: "TLDSS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLDSS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLDSR (degF):
+      input:
+        name: "TLDSR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLDSR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PBAC2 (kW):
+      input:
+        name: "PBAC2 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PBAC2 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP10 (kW):
+      input:
+        name: "PP10 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP10 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PGVCA (kW):
+      input:
+        name: "PGVCA (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PGVCA (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PGVCB (kW):
+      input:
+        name: "PGVCB (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PGVCB (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    NA (kW):
+      input:
+        name: "NA (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: NA (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PGV (kW):
+      input:
+        name: "PGV (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PGV (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PGF (kW):
+      input:
+        name: "PGF (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PGF (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PGMSA (kW):
+      input:
+        name: "PGMSA (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PGMSA (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PGMSB (kW):
+      input:
+        name: "PGMSB (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PGMSB (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PDRIAPos (kW):
+      input:
+        name: "PDRIAPos (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PDRIAPos (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PDRIBPos (kW):
+      input:
+        name: "PDRIBPos (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PDRIBPos (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PDRIANeg (kW):
+      input:
+        name: "PDRIANeg (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PDRIANeg (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PDRIBNeg (kW):
+      input:
+        name: "PDRIBNeg (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PDRIBNeg (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PPVDC:
+      input:
+        name: "PPVDC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PPVDC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PBOUT:
+      input:
+        name: "PBOUT"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PBOUT
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PBIN:
+      input:
+        name: "PBIN"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PBIN
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PGIN:
+      input:
+        name: "PGIN"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PGIN
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PGOUT:
+      input:
+        name: "PGOUT"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PGOUT
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PVC1:
+      input:
+        name: "PVC1"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PVC1
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    DR:
+      input:
+        name: "DR"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: DR
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SOC:
+      input:
+        name: "SOC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SOC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA1 (kW):
+      input:
+        name: "PA1 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA1 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PF1 (kW):
+      input:
+        name: "PF1 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PF1 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA2 (kW):
+      input:
+        name: "PA2 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA2 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PF2 (kW):
+      input:
+        name: "PF2 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PF2 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA3A (kW):
+      input:
+        name: "PA3A (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA3A (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA4A (kW):
+      input:
+        name: "PA4A (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA4A (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA3B (kW):
+      input:
+        name: "PA3B (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA3B (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA4B (kW):
+      input:
+        name: "PA4B (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA4B (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA5 (kW):
+      input:
+        name: "PA5 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA5 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PF3 (kW):
+      input:
+        name: "PF3 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PF3 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA6 (kW):
+      input:
+        name: "PA6 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA6 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP1 (kW):
+      input:
+        name: "PP1 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP1 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA7A (kW):
+      input:
+        name: "PA7A (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA7A (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP2 (kW):
+      input:
+        name: "PP2 (kW)"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: PP2 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA7B (kW):
+      input:
+        name: "PA7B (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA7B (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP3 (kW):
+      input:
+        name: "PP3 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP3 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA8 (kW):
+      input:
+        name: "PA8 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA8 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP4 (kW):
+      input:
+        name: "PP4 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP4 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP5 (kW):
+      input:
+        name: "PP5 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP5 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP6 (kW):
+      input:
+        name: "PP6 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP6 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP7 (kW):
+      input:
+        name: "PP7 (kW)"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: PP7 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP8 (kW):
+      input:
+        name: "PP8 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP8 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PL1 (kW):
+      input:
+        name: "PL1 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PL1 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP9 (kW):
+      input:
+        name: "PP9 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP9 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA9 (kW):
+      input:
+        name: "PA9 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA9 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP15 (kW):
+      input:
+        name: "PP15 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP15 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP11 (kW):
+      input:
+        name: "PP11 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP11 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP12 (kW):
+      input:
+        name: "PP12 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP12 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP13 (kW):
+      input:
+        name: "PP13 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PP13 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PP14 (kW):
+      input:
+        name: "PP14 (kW)"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: PP14 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PL2 (kW):
+      input:
+        name: "PL2 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PL2 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PHPT1 (kW):
+      input:
+        name: "PHPT1 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PHPT1 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PBAC1 (kW):
+      input:
+        name: "PBAC1 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PBAC1 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PHPT2 (kW):
+      input:
+        name: "PHPT2 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PHPT2 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PL3 (kW):
+      input:
+        name: "PL3 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PL3 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PPHS (kW):
+      input:
+        name: "PPHS (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PPHS (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PL4 (kW):
+      input:
+        name: "PL4 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PL4 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PHPL (kW):
+      input:
+        name: "PHPL (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PHPL (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA10 (kW):
+      input:
+        name: "PA10 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA10 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA11B (kW):
+      input:
+        name: "PA11B (kW)"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: PA11B (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PL5 (kW):
+      input:
+        name: "PL5 (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PL5 (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PA11A (kW):
+      input:
+        name: "PA11A (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PA11A (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PNET (kW):
+      input:
+        name: "PNET (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PNET (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PVC (kW):
+      input:
+        name: "PVC (kW)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PVC (kW)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMW1 (degF):
+      input:
+        name: "TMW1 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMW1 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMW2 (degF):
+      input:
+        name: "TMW2 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMW2 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMW3 (degF):
+      input:
+        name: "TMW3 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMW3 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMW4 (degF):
+      input:
+        name: "TMW4 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMW4 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMW5 (degF):
+      input:
+        name: "TMW5 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMW5 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMW6 (degF):
+      input:
+        name: "TMW6 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMW6 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMC1 (degF):
+      input:
+        name: "TMC1 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMC1 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMC2 (degF):
+      input:
+        name: "TMC2 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMC2 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMC3 (degF):
+      input:
+        name: "TMC3 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMC3 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMC4 (degF):
+      input:
+        name: "TMC4 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMC4 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMC5 (degF):
+      input:
+        name: "TMC5 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMC5 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TMC6 (degF):
+      input:
+        name: "TMC6 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TMC6 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSC1 (degF):
+      input:
+        name: "TSC1 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSC1 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSC2 (degF):
+      input:
+        name: "TSC2 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSC2 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSC3 (degF):
+      input:
+        name: "TSC3 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSC3 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSC4 (degF):
+      input:
+        name: "TSC4 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSC4 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSC5 (degF):
+      input:
+        name: "TSC5 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSC5 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSC6 (degF):
+      input:
+        name: "TSC6 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSC6 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFCS (degF):
+      input:
+        name: "TFCS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFCS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFCB (degF):
+      input:
+        name: "TFCB (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFCB (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFCI (degF):
+      input:
+        name: "TFCI (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFCI (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFES (degF):
+      input:
+        name: "TFES (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFES (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFEB (degF):
+      input:
+        name: "TFEB (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFEB (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFEI (degF):
+      input:
+        name: "TFEI (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFEI (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFCF (degF):
+      input:
+        name: "TFCF (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFCF (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFFI (degF):
+      input:
+        name: "TFFI (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFFI (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TFFE (degF):
+      input:
+        name: "TFFE (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TFFE (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNW1 (degF):
+      input:
+        name: "TNW1 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNW1 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNW2 (degF):
+      input:
+        name: "TNW2 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNW2 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNW3 (degF):
+      input:
+        name: "TNW3 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNW3 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNW4 (degF):
+      input:
+        name: "TNW4 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNW4 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNW5 (degF):
+      input:
+        name: "TNW5 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNW5 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSW1 (degF):
+      input:
+        name: "TSW1 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSW1 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSW2 (degF):
+      input:
+        name: "TSW2 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSW2 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSW3 (degF):
+      input:
+        name: "TSW3 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSW3 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSW4 (degF):
+      input:
+        name: "TSW4 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSW4 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSW5 (degF):
+      input:
+        name: "TSW5 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSW5 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSPV (degF):
+      input:
+        name: "TSPV (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSPV (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    RHW1 (%):
+      input:
+        name: "RHW1 (%)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: RHW1 (%)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    RHW2 (%):
+      input:
+        name: "RHW2 (%)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: RHW2 (%)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLSS (degF):
+      input:
+        name: "TLSS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLSS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLSR (degF):
+      input:
+        name: "TLSR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLSR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLLS (degF):
+      input:
+        name: "TLLS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLLS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLLR (degF):
+      input:
+        name: "TLLR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLLR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLCPS (degF):
+      input:
+        name: "TLCPS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLCPS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLCPR (degF):
+      input:
+        name: "TLCPR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLCPR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLFR (degF):
+      input:
+        name: "TLFR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLFR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSSS (degF):
+      input:
+        name: "TSSS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSSS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSSR (degF):
+      input:
+        name: "TSSR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSSR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD1SS (degF):
+      input:
+        name: "TD1SS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD1SS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD1SR (degF):
+      input:
+        name: "TD1SR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD1SR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD2SS (degF):
+      input:
+        name: "TD2SS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD2SS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD2SR (degF):
+      input:
+        name: "TD2SR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD2SR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD3SS (degF):
+      input:
+        name: "TD3SS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD3SS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD3SR (degF):
+      input:
+        name: "TD3SR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD3SR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD4SS (degF):
+      input:
+        name: "TD4SS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD4SS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD4SR (degF):
+      input:
+        name: "TD4SR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD4SR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW1SS (degF):
+      input:
+        name: "TW1SS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW1SS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW1SR (degF):
+      input:
+        name: "TW1SR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW1SR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW1GS (degF):
+      input:
+        name: "TW1GS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW1GS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW1GR (degF):
+      input:
+        name: "TW1GR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW1GR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW2SS (degF):
+      input:
+        name: "TW2SS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW2SS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW2SR (degF):
+      input:
+        name: "TW2SR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW2SR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW2GS (degF):
+      input:
+        name: "TW2GS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW2GS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW2GR (degF):
+      input:
+        name: "TW2GR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW2GR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW3SS (degF):
+      input:
+        name: "TW3SS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW3SS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW3SR (degF):
+      input:
+        name: "TW3SR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW3SR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW3GS (degF):
+      input:
+        name: "TW3GS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW3GS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW3GR (degF):
+      input:
+        name: "TW3GR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW3GR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW4SS (degF):
+      input:
+        name: "TW4SS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW4SS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW4SR (degF):
+      input:
+        name: "TW4SR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW4SR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW4GS (degF):
+      input:
+        name: "TW4GS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW4GS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW4GR (degF):
+      input:
+        name: "TW4GR (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW4GR (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TLFS (degF):
+      input:
+        name: "TLFS (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TLFS (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSMD1 (%Moist):
+      input:
+        name: "TSMD1 (%Moist)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSMD1 (%Moist)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSMD2 (%Moist):
+      input:
+        name: "TSMD2 (%Moist)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSMD2 (%Moist)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSMW1 (%Moist):
+      input:
+        name: "TSMW1 (%Moist)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSMW1 (%Moist)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TSMW2 (%Moist):
+      input:
+        name: "TSMW2 (%Moist)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TSMW2 (%Moist)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD11 (degF):
+      input:
+        name: "TD11 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD11 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD12 (degF):
+      input:
+        name: "TD12 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD12 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD13 (degF):
+      input:
+        name: "TD13 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD13 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD14 (degF):
+      input:
+        name: "TD14 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD14 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD15 (degF):
+      input:
+        name: "TD15 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD15 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD21 (degF):
+      input:
+        name: "TD21 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD21 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD22 (degF):
+      input:
+        name: "TD22 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD22 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD23 (degF):
+      input:
+        name: "TD23 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD23 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD24 (degF):
+      input:
+        name: "TD24 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD24 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD25 (degF):
+      input:
+        name: "TD25 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD25 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD31 (degF):
+      input:
+        name: "TD31 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD31 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD32 (degF):
+      input:
+        name: "TD32 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD32 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD33 (degF):
+      input:
+        name: "TD33 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD33 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD34 (degF):
+      input:
+        name: "TD34 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD34 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TD35 (degF):
+      input:
+        name: "TD35 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TD35 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TND1 (degF):
+      input:
+        name: "TND1 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TND1 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TND2 (degF):
+      input:
+        name: "TND2 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TND2 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TND3 (degF):
+      input:
+        name: "TND3 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TND3 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TND4 (degF):
+      input:
+        name: "TND4 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TND4 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TND5 (degF):
+      input:
+        name: "TND5 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TND5 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW11 (degF):
+      input:
+        name: "TW11 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW11 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW12 (degF):
+      input:
+        name: "TW12 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW12 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW13 (degF):
+      input:
+        name: "TW13 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW13 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW14 (degF):
+      input:
+        name: "TW14 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW14 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW15 (degF):
+      input:
+        name: "TW15 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW15 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW21 (degF):
+      input:
+        name: "TW21 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW21 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW22 (degF):
+      input:
+        name: "TW22 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW22 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW23 (degF):
+      input:
+        name: "TW23 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW23 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW24 (degF):
+      input:
+        name: "TW24 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW24 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW25 (degF):
+      input:
+        name: "TW25 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW25 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW31 (degF):
+      input:
+        name: "TW31 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW31 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW32 (degF):
+      input:
+        name: "TW32 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW32 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW33 (degF):
+      input:
+        name: "TW33 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW33 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW34 (degF):
+      input:
+        name: "TW34 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW34 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TW35 (degF):
+      input:
+        name: "TW35 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TW35 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNWB1 (degF):
+      input:
+        name: "TNWB1 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNWB1 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNWB2 (degF):
+      input:
+        name: "TNWB2 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNWB2 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNWB3 (degF):
+      input:
+        name: "TNWB3 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNWB3 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    TNWB4 (degF):
+      input:
+        name: "TNWB4 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNWB4 (degF)
+        standard_name: ""
+        comment: ""
+        units: ""
+
     TNWB5 (degF):
       input:
         name: "TNWB5 (degF)"
@@ -51,8 +2796,909 @@ dataset_definition:
         long_name: TNWB5 (degF)
         standard_name: ""
         comment: ""
-        units: deg F
+        units: ""
 
+    SHPH:
+      input:
+        name: "SHPH"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SHPH
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SHPC:
+      input:
+        name: "SHPC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SHPC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SHPD:
+      input:
+        name: "SHPD"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SHPD
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SVC:
+      input:
+        name: "SVC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SVC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SVF:
+      input:
+        name: "SVF"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: SVF
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    CE:
+      input:
+        name: "CE"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: CE
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    CNG:
+      input:
+        name: "CNG"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: CNG
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    STF:
+      input:
+        name: "STF"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: STF
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPDH:
+      input:
+        name: "QHPDH"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPDH
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPDC:
+      input:
+        name: "QHPDC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPDC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPDW:
+      input:
+        name: "QHPDW"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPDW
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPDD:
+      input:
+        name: "QHPDD"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPDD
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPCH:
+      input:
+        name: "QHPCH"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPCH
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPCC:
+      input:
+        name: "QHPCC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPCC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPCW:
+      input:
+        name: "QHPCW"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPCW
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPCD:
+      input:
+        name: "QHPCD"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPCD
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QSLABH:
+      input:
+        name: "QSLABH"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QSLABH
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QSLABC:
+      input:
+        name: "QSLABC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QSLABC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QCEILH:
+      input:
+        name: "QCEILH"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QCEILH
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QCEILC:
+      input:
+        name: "QCEILC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QCEILC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QVC:
+      input:
+        name: "QVC"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QVC
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QDHD:
+      input:
+        name: "QDHD"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QDHD
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QDHW:
+      input:
+        name: "QDHW"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QDHW
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S1:
+      input:
+        name: "S1"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S1
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S2:
+      input:
+        name: "S2"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S2
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S3:
+      input:
+        name: "S3"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S3
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S4:
+      input:
+        name: "S4"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S4
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S5:
+      input:
+        name: "S5"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S5
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S6:
+      input:
+        name: "S6"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S6
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S7:
+      input:
+        name: "S7"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S7
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S8:
+      input:
+        name: "S8"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S8
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S9:
+      input:
+        name: "S9"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S9
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S10:
+      input:
+        name: "S10"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S10
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S11:
+      input:
+        name: "S11"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S11
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S12:
+      input:
+        name: "S12"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S12
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S13:
+      input:
+        name: "S13"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S13
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S14:
+      input:
+        name: "S14"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S14
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S15:
+      input:
+        name: "S15"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: S15
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S16:
+      input:
+        name: "S16"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: S16
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S17:
+      input:
+        name: "S17"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S17
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S18:
+      input:
+        name: "S18"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: S18
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S19:
+      input:
+        name: "S19"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: S19
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S20:
+      input:
+        name: "S20"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: S20
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    SB2T:
+      input:
+        name: "SB2T"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: SB2T
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMSA:
+      input:
+        name: "VMSA"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMSA
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    VMSB:
+      input:
+        name: "VMSB"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: VMSB
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    F1Temp:
+      input:
+        name: "F1Temp"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: F1Temp
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    F2Temp:
+      input:
+        name: "F2Temp"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: F2Temp
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S21:
+      input:
+        name: "S21"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: S21
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S31:
+      input:
+        name: "S31"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: S31
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S32:
+      input:
+        name: "S32"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: S32
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    S33:
+      input:
+        name: "S33"
+      dims: [time]
+      type: int64
+      attrs:
+        long_name: S33
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    placeholder3:
+      input:
+        name: "placeholder3"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: placeholder3
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    placeholder4:
+      input:
+        name: "placeholder4"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: placeholder4
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    placeholder5:
+      input:
+        name: "placeholder5"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: placeholder5
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    placeholder6:
+      input:
+        name: "placeholder6"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: placeholder6
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PLF_Heating:
+      input:
+        name: "PLF_Heating"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PLF_Heating
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PLF_Cooling:
+      input:
+        name: "PLF_Cooling"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PLF_Cooling
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PLF_DHW:
+      input:
+        name: "PLF_DHW"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PLF_DHW
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PLF_Ceiling:
+      input:
+        name: "PLF_Ceiling"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PLF_Ceiling
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PLF_Floor:
+      input:
+        name: "PLF_Floor"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PLF_Floor
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPDH (Btu/h):
+      input:
+        name: "QHPDH (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPDH (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPDC (Btu/h):
+      input:
+        name: "QHPDC (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPDC (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPDW (Btu/h):
+      input:
+        name: "QHPDW (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPDW (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPDD (Btu/h):
+      input:
+        name: "QHPDD (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPDD (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPCH (Btu/h):
+      input:
+        name: "QHPCH (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPCH (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPCC (Btu/h):
+      input:
+        name: "QHPCC (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPCC (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPCW (Btu/h):
+      input:
+        name: "QHPCW (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPCW (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    QHPCD (Btu/h):
+      input:
+        name: "QHPCD (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: QHPCD (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Floor_Heat (Btu/h):
+      input:
+        name: "Floor_Heat (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Floor_Heat (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Floor_Cool (Btu/h):
+      input:
+        name: "Floor_Cool (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Floor_Cool (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Ceil_Heat (Btu/h):
+      input:
+        name: "Ceil_Heat (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Ceil_Heat (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Ceil_Cool (Btu/h):
+      input:
+        name: "Ceil_Cool (Btu/h)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Ceil_Cool (Btu/h)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    HP COP:
+      input:
+        name: "HP COP"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: HP COP
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    HP EER:
+      input:
+        name: "HP EER"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: HP EER
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Ceiling COP:
+      input:
+        name: "Ceiling COP"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Ceiling COP
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Ceiling EER:
+      input:
+        name: "Ceiling EER"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Ceiling EER
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Floor COP:
+      input:
+        name: "Floor COP"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Floor COP
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Floor EER:
+      input:
+        name: "Floor EER"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Floor EER
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    Total Water (Gal):
+      input:
+        name: "Total Water (Gal)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: Total Water (Gal)
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PLF_Heating_2ndStage:
+      input:
+        name: "PLF_Heating_2ndStage"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PLF_Heating_2ndStage
+        standard_name: ""
+        comment: ""
+        units: ""
+
+    PLF_Cooling_2ndStage:
+      input:
+        name: "PLF_Cooling_2ndStage"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: PLF_Cooling_2ndStage
+        standard_name: ""
+        comment: ""
+        units: ""
 #-----------------------------------------------------------------
 quality_management:
   manage_small_gap_values:
@@ -65,7 +3711,7 @@ quality_management:
       - classname: ingest.honda_smart_home_location.pipeline.qc.ReplaceFailedValuesWithLinear
       - classname: tsdat.qc.handlers.RecordQualityResults
         parameters:
-          bit: 1
+          bit: 2
           assessment: Bad
           meaning: "Gap spans less than 360 minutes"
     variables:
@@ -75,10 +3721,10 @@ quality_management:
     checker:
       classname: tsdat.qc.checkers.CheckMissing
     handlers:
-      - classname: ingest.honda_smart_home_location.pipeline.qc.RemoveFailedValues
+      - classname: tsdat.qc.handlers.RemoveFailedValues
       - classname: tsdat.qc.handlers.RecordQualityResults
         parameters:
-          bit: 2
+          bit: 1
           assessment: Bad
           meaning: "Filled with -9999"
     variables:

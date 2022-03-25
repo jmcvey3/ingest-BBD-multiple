@@ -1,0 +1,85 @@
+pipeline:
+  type: Ingest
+
+  # These parameters will be used to name files.
+  location_id: "honda_smart_home_location"
+  dataset_name: "honda_smart_home"
+  # qualifier: ""
+  temporal: 1min
+  data_level: "b1" # If not applying QC this should be set to "a1"
+
+dataset_definition:
+  attributes:
+    title: "Honda Smart Home"
+    description: "description"
+    conventions: MHKiT-Cloud Data Standards v. 1.0
+    institution: Pacific Northwest National Laboratory
+    code_url: https://github.com/tsdat/ingest-template
+    location_meaning: "Location"
+
+  dimensions:
+    time:
+      length: unlimited
+
+  variable_defaults:
+    dims: [time]
+    attrs:
+      _FillValue: -9999 # we do not want to interpolate missing value
+
+  variables:
+    time:
+      input:
+        name: "Timestamp"
+        converter:
+          classname: tsdat.utils.converters.StringTimeConverter
+          parameters:
+            timezone: UTC
+            time_format: "%m/%d/%y %H:%M"
+      dims: [time]
+      type: long
+      attrs:
+        long_name: Time (UTC)
+        standard_name: time
+        units: seconds since 1970-01-01T00:00:00
+
+    TNWB5 (degF):
+      input:
+        name: "TNWB5 (degF)"
+      dims: [time]
+      type: float
+      attrs:
+        long_name: TNWB5 (degF)
+        standard_name: ""
+        comment: ""
+        units: deg F
+
+#-----------------------------------------------------------------
+quality_management:
+  manage_small_gap_values:
+    checker:
+      classname: ingest.honda_smart_home_location.pipeline.qc.CheckGap
+      parameters:
+        min_time_gap: 0
+        max_time_gap: 360
+    handlers:
+      - classname: ingest.honda_smart_home_location.pipeline.qc.ReplaceFailedValuesWithLinear
+      - classname: tsdat.qc.handlers.RecordQualityResults
+        parameters:
+          bit: 1
+          assessment: Bad
+          meaning: "Gap spans less than 360 minutes"
+    variables:
+      - DATA_VARS
+
+  manage_missing_values:
+    checker:
+      classname: tsdat.qc.checkers.CheckMissing
+    handlers:
+      - classname: ingest.honda_smart_home_location.pipeline.qc.RemoveFailedValues
+      - classname: tsdat.qc.handlers.RecordQualityResults
+        parameters:
+          bit: 2
+          assessment: Bad
+          meaning: "Filled with -9999"
+    variables:
+      - DATA_VARS
